@@ -6,4 +6,5 @@ int main(){
     for (int i = 0; i < a; i++){
         cout << "Hello world" << endl;
     }
+    cout << "provando comitment config" << endl;
 }
