@@ -7,4 +7,5 @@ int main(){
         cout << "Hello world" << endl;
     }
     cout << "provando comitment config" << endl;
+    cout << "aprendiendo git" << endl;
 }
