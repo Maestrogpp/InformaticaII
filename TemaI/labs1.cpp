@@ -64,15 +64,15 @@ int main(){
                 /*La variable a servira para calcular cuantos espacios de memoria debemos saltar para asignar 
                 correctamente los valores a la matriz por medio de gestion de memoria*/
                 int a = 0;
-                static const int n = 9;
-                static const int m = 6;
+                n = 9;
+                m = 6;
                 //Asignacion de referencias para mayor eficiencia
                 int &ref_m = m;
                 int &ref_n = n;
                 //El tamaño de matriz maximo que se soporta es 20x20
-                float matriz1[n][m];
-                float matriz2[n][m];
-                float result[n][m];
+                float matriz1[20][20];
+                float matriz2[20][20];
+                float result[20][20];
                 //Asignación de punteros
                 float* pam1 = &matriz1[0][0];
                 float* pam2 = &matriz2[0][0];
