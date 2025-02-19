@@ -1,5 +1,6 @@
 //Declaracion de utilidad
 using namespace std;
+#include<iostream>
 
 //Declaracion de funcionalidades
 void ejercicio1(float& ref_f1){
@@ -23,17 +24,9 @@ int multiplicarVectores(int* pav1, int* pav2, int n){
     return result;
 }
 
-void sumaMatrices(float* p1, float* p2, float* par, int& m, int& n){
-    //Declaracion de variables
-    int cont = 0;
-    int a = 0;
+void sumaMatrices(float* p1, float* p2, float* par, const int& m, const int& n){
     //Declaracion de la ecuacion dispuesta en el ejercicio 7
     for (int i = 0; i < n*m; i++){
-        if(cont > n-1){
-            cont = 0;
-            a = a + (20 - n);
-        }
-        *(par + i + a) = *(p1 + i + a) + *(p2 + i + a);
-        cont++;
+        *(par + i) = *(p1 + i) + *(p2 + i);
     }
 } 

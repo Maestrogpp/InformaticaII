@@ -57,22 +57,14 @@ int main(){
                 break;
             }
             case 7:{
-                //Comentario sin relacion con el codigo - soy consciente de que me he complicado la vida bastante pero queria experimentar con las matrices y los punteros
                 //Declaracion de variables y matrices
-                int m, n;
-                int cont = 0;
-                /*La variable a servira para calcular cuantos espacios de memoria debemos saltar para asignar 
-                correctamente los valores a la matriz por medio de gestion de memoria*/
-                int a = 0;
-                n = 9;
-                m = 6;
-                //Asignacion de referencias para mayor eficiencia
-                int &ref_m = m;
-                int &ref_n = n;
-                //El tamaño de matriz maximo que se soporta es 20x20
-                float matriz1[20][20];
-                float matriz2[20][20];
-                float result[20][20];
+                int const static n = 6;
+                int const static m = 6;
+                float matriz1[n][m];
+                float matriz2[n][m];
+                float result[n][m];
+                int const &ref_n = n;
+                int const &ref_m = m; 
                 //Asignación de punteros
                 float* pam1 = &matriz1[0][0];
                 float* pam2 = &matriz2[0][0];
@@ -81,34 +73,23 @@ int main(){
                 float* par = &result[0][0];
                 //inicializacion de las matrices por medio de punteros
                 for (int i = 0; i < n*m; i++){
-                    //Se toma en cuenta la cantidad de columnas que tiene la matriz deseada ya que se hace por memoria
-                    if(cont > n-1){
-                        cont = 0;
-                        a = a + (20 - n);
-                    }
-                    *(pam1 + i + a) = i;
-                    *(pam2 + i + a) = i;
-                    cont++;
+                    *(pam1 + i) = i;
+                    *(pam2 + i) = i;
                 }
                 //llamada a funcion - (Pass-by-reference & Pass-by-pointer)
-                sumaMatrices(pam1, pam2, par, ref_m, ref_n);
-                /*Se reinician al valor inicial de a y cont debido a que es esencial para los saltos en memoria, 
-                ya que hay valores en columnas y filas que no e utilizaran a menos que utilicemos la matriz 
-                de tamaño maximo*/
-                a = 0;
-                cont = 0;
+                sumaMatrices(pam1, pam2, par, ref_n, ref_m);
+                int cont = 0;
                 //Salida a pantalla del resultado
                 cout << "El resultado de la suma sera la siguiente matriz: " << endl << endl;
                 for (int i = 0; i < n*m; i++){
-                    if(cont > n-1){
+                    cout << *(par + i) << " ";
+                    if (cont == n-1){
                         cont = 0;
-                        a = a + (20 - n);
                         cout << endl;
                     }
-                    cout << *(par + i + a) << " ";
                     cont++;
                 }
-                cout << endl;
+                cout << endl << endl;
                 break;
             }
             case 9:{
