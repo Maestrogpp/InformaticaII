@@ -15,5 +15,6 @@ class mesaCuadrada{
      int getPatas();
      float getLado();
      string getColor();
+     float obtenerArea();
 
 };

@@ -32,3 +32,7 @@ float mesaCuadrada::getLado(){
 string mesaCuadrada::getColor(){
     return this->color;
 }
+
+float mesaCuadrada::obtenerArea(){
+    return (this->lado * this->lado);
+}
