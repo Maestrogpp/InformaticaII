@@ -9,7 +9,7 @@ typedef struct{
 
 class mazo{
     private: 
-        carta cartas[48];
+        carta cartas[49];
         carta* carta_superior;
     public:
         int numero_de_cartas = 48;

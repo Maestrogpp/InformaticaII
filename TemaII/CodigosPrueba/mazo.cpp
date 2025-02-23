@@ -9,8 +9,8 @@ mazo::mazo(){
 };
 
 int mazo::llenarMazo(){
+    int cont = 0;
     for(int i; i < 48; i++){
-        int cont = 0;
         carta aux;
         if (cont < 12){
             aux.carta = "Bastos";
@@ -21,8 +21,7 @@ int mazo::llenarMazo(){
         }else if(cont > 36){
             aux.carta = "Espadas";
         }
-
-        aux.valor = i % 12 * 10;
+        aux.valor = i % 12;
         cartas[i] = aux;
         cont++;
     }
@@ -31,17 +30,18 @@ carta mazo::getCarta(int numero){
     return this->cartas[numero];
 }
 carta* mazo::robarCarta(){
-    return this->cartas;
+    carta* card = &cartas[0];
+    return card; 
 }
 void mazo::mezclarMazo(){
     for(int i = 0; i < 48; i++){
-        int numero1 = rand() ;
-        int numero2 = rand() ;
-        string a = cartas[numero1].carta;
-        int b = cartas[numero1].valor;
-        cartas[numero1].carta = cartas[numero2].carta;
-        cartas[numero1].valor = cartas[numero2].valor;
-        cartas[numero1].carta = a;
-        cartas[numero1].valor = b;
+        carta* cardSelected1 = &cartas[rand()%48];
+        carta* cardSelected2 = &cartas[rand()%48];
+        carta* cardKeep = &cartas[49];
+
+        *cardKeep = *cardSelected1;
+        *cardSelected2 = *cardSelected1;
+        *cardSelected1 = *cardKeep;
     }
 }
+
