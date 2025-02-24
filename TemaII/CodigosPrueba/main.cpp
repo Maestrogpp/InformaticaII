@@ -3,7 +3,7 @@
 #include"coche.h"
 #include"mesaCuadrada.h"
 #include"mazo.h"
-#include"utils.h"
+#include"utils1.h"
 using namespace std;
 
 int main(){
@@ -120,7 +120,6 @@ int main(){
                                 cont2 = cont2 + 2;
                                 cont3++;
                                 cout << "Deseas otra carta? (Y/N)" << endl;
-                                cin >> option2;
                                 if(option2 != 'Y' && option2 != 'N'){
                                     state7 = true;
                                     while (state7 == true){
@@ -138,7 +137,7 @@ int main(){
                             }
                         }
                     }else{
-                        while(b < 17){
+                        while(rdcom < 17){
                             mano[4 + cont2].valor = NuevoMazo.getCarta(rand()%48).valor;
                             rdcom = rdcom + mano[4 + cont2].valor;
                             cout << "Dealer got: " << mano[4 + cont2].valor << " " << mano[4 + cont2].carta << endl;
@@ -148,8 +147,8 @@ int main(){
                         }
                     }
                     cont2 = 4;
-                    if (b < 17){
-                        while(b < 17){
+                    if (rdcom < 17){
+                        while(rdcom < 17){
                             mano[4 + cont2].valor = NuevoMazo.getCarta(rand()%48).valor;
                             rdcom = rdcom + mano[4 + cont2].valor;
                             cout << "Dealer got: " << mano[4 + cont2].valor << " " << mano[4 + cont2].carta << endl;

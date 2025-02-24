@@ -3,11 +3,7 @@
 #include"mazo.h"
 
 using namespace std;
-
-mazo::mazo(){
-
-};
-
+mazo::mazo(){};
 int mazo::llenarMazo(){
     int cont = 0;
     for(int i; i < 48; i++){

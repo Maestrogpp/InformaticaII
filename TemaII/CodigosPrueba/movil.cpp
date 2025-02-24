@@ -6,7 +6,7 @@ using namespace std;
 movil::movil(){
     IMEI = 6;
     modelo = "Xiaomi t14";
-    numero = 60912213782;
+    numero = 6091;
 }
 void movil::setIMEI(int imei){
     this->IMEI = imei;
