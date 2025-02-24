@@ -51,7 +51,7 @@ int main(){
                 }
                 mazo bj;
                 bj.llenarMazo();
-                carta mano[20];
+                carta mano[30];
                 //bj.mezclarMazo();
                 for(int i = 0; i < 4; i ++){
                     if(i == 0 | i == 2){
