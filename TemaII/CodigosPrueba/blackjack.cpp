@@ -51,7 +51,7 @@ int main(){
                 }
                 mazo bj;
                 bj.llenarMazo();
-                carta mano[10];
+                carta mano[20];
                 //bj.mezclarMazo();
                 for(int i = 0; i < 4; i ++){
                     if(i == 0 | i == 2){
@@ -64,21 +64,33 @@ int main(){
                         cardsplayed++;
                     }
                 }
-                //EL CODIGO FUNCIONA PERFECTO HASTA AQUÍ
+
                 int totalY = mano[0].valor + mano[2].valor;
                 int totalD = mano[1].valor + mano[3].valor;
-
-                if(totalY < 21){
+                *pao3 = 'Y';
+                int cont = 0;
+                while (totalY < 21 && *pao3 == 'Y'){
+                    cout << "Do you want to get another card?" << endl;
+                    cin >> *pao3;
+                    if(*pao3 == 'Y'){
+                        carta aleatoryCard1 = bj.getCarta(randomnum());
+                        cout << "You got a " << aleatoryCard1.valor << " of " << aleatoryCard1.carta << endl << endl; 
+                        totalY = totalY + aleatoryCard1.valor;
+                        cout << "Now you have " << totalY << " on your hand" << endl;
+                        mano[cont+4] = aleatoryCard1;
+                        cont++; cont++;
+                        cardsplayed++;
+                    }
                     
                 }
                 //EL CODIGO FUNCIONA PERFECTO HASTA AQUÍ
-                int cont = 0;
+                cont = 0;
                 while(totalD < 17){
-                    carta aleatoryCard = bj.getCarta(randomnum());
-                    cout << "Dealer got a " << aleatoryCard.valor << " of " << aleatoryCard.carta << endl << endl; 
-                    totalD = totalD + aleatoryCard.valor;
+                    carta aleatoryCard2 = bj.getCarta(randomnum());
+                    cout << "Dealer got a " << aleatoryCard2.valor << " of " << aleatoryCard2.carta << endl << endl; 
+                    totalD = totalD + aleatoryCard2.valor;
                     cout << "Now dealer have " << totalD << " on his hand" << endl;
-                    mano[cont] = aleatoryCard;
+                    mano[cont+5] = aleatoryCard2;
                     cont++; cont++;
                     cardsplayed++;
                 }
