@@ -26,7 +26,7 @@ int main(){
             cin >> *pao;
         }
     }
-
+    
     if(*pao = 'Y'){
         *pas = 2000.5;
         cout << "Do you want to play with a special feature? (If your cards are of the same kind you will recive x4 your bet!)" << endl;
@@ -37,6 +37,7 @@ int main(){
                 cin >> *pao2;
             }
         }
+        cout << endl;
         //Inicio del juego recursivo
         while(state == true){
             if(*pao2 == 'Y'){
@@ -49,6 +50,7 @@ int main(){
                         cin >> *pap;
                     }
                 }
+                cout << endl;
                 mazo bj;
                 bj.llenarMazo();
                 carta mano[30];
@@ -64,7 +66,7 @@ int main(){
                         cardsplayed++;
                     }
                 }
-
+                cout << endl;
                 int totalY = mano[0].valor + mano[2].valor;
                 int totalD = mano[1].valor + mano[3].valor;
                 *pao3 = 'Y';
@@ -72,11 +74,12 @@ int main(){
                 while (totalY < 21 && *pao3 == 'Y'){
                     cout << "Do you want to get another card?" << endl;
                     cin >> *pao3;
+                    cout << endl;
                     if(*pao3 == 'Y'){
                         carta aleatoryCard1 = bj.getCarta(randomnum());
-                        cout << "You got a " << aleatoryCard1.valor << " of " << aleatoryCard1.carta << endl << endl; 
+                        cout << "You got a " << aleatoryCard1.valor << " of " << aleatoryCard1.carta << endl; 
                         totalY = totalY + aleatoryCard1.valor;
-                        cout << "Now you have " << totalY << " on your hand" << endl;
+                        cout << "Now you have " << totalY << " on your hand" << endl << endl;
                         mano[cont+4] = aleatoryCard1;
                         cont++; cont++;
                         cardsplayed++;
@@ -87,9 +90,9 @@ int main(){
                 cont = 0;
                 while(totalD < 17){
                     carta aleatoryCard2 = bj.getCarta(randomnum());
-                    cout << "Dealer got a " << aleatoryCard2.valor << " of " << aleatoryCard2.carta << endl << endl; 
+                    cout << "Dealer got a " << aleatoryCard2.valor << " of " << aleatoryCard2.carta << endl; 
                     totalD = totalD + aleatoryCard2.valor;
-                    cout << "Now dealer have " << totalD << " on his hand" << endl;
+                    cout << "Now dealer have " << totalD << " on his hand" << endl << endl;
                     mano[cont+5] = aleatoryCard2;
                     cont++; cont++;
                     cardsplayed++;
