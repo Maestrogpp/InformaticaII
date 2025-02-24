@@ -1,6 +1,7 @@
 #include"utils1.h"
 #include<string>
 #include<stdio.h>
+#include<time.h>
 #include<iostream>
 using namespace std;
 
@@ -20,4 +21,11 @@ bool betErrorControler(int num, int saldo){
     }else{
         return false;
     }
+}
+
+int randomnum(){
+    int num = 0;
+    srand(time(NULL));
+    num = rand() % 48;
+    return num;
 }

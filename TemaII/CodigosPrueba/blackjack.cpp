@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include"mazo.h"
+#include"utils1.h"
 using namespace std;
 
 int main(){
@@ -19,73 +20,61 @@ int main(){
     cin >> *pao;
     cout << endl;
 
-    while(*pao != 'Y' && *pao != 'N'){
-        cout << "That option is not contempled, please try again!" << endl;
-        cin >> *pao;
+    if(*pao != 'Y' && *pao != 'N'){
+        while(*pao != 'Y' && *pao != 'N'){
+            cout << "That option is not contempled, please try again!" << endl;
+            cin >> *pao;
+        }
     }
 
     if(*pao = 'Y'){
         *pas = 2000.5;
         cout << "Do you want to play with a special feature? (If your cards are of the same kind you will recive x4 your bet!)" << endl;
         cin >> *pao2;
-        while(*pao2 != 'Y' && *pao2 != 'N'){
-            cout << "That option is not contempled, please try again!" << endl;
-            cin >> *pao2;
+        if(*pao2 != 'Y' && *pao2 != 'N'){
+            while(*pao2 != 'Y' && *pao2 != 'N'){
+                cout << "That option is not contempled, please try again!" << endl;
+                cin >> *pao2;
+            }
         }
         //Inicio del juego recursivo
         while(state == true){
             if(*pao2 == 'Y'){
+                cardsplayed = 0;
                 cout << "Please place your bet" << endl;
                 cin >> *pap;
-                while(*pap < 0 && *pap > *pas){
-                    cout << "That bet is not posible! please place another bet" << endl;
-                    cin >> *pap;
+                if(*pap < 0 | *pap > *pas){
+                    while(*pap < 0 | *pap > *pas){
+                        cout << "That bet is not posible! please place another bet" << endl;
+                        cin >> *pap;
+                    }
                 }
                 mazo bj;
                 bj.llenarMazo();
-                //bj.mezclarMazo();
                 carta mano[10];
+                //bj.mezclarMazo();
                 for(int i = 0; i < 4; i ++){
                     if(i == 0 | i == 2){
-                        mano[i] = bj.getCarta(rand()%47);
+                        mano[i] = bj.getCarta(randomnum());
                         cout << "You got a " << mano[i].valor << " of " << mano[i].carta << endl;
                         cardsplayed++;
                     }else{
-                        mano[i] = bj.getCarta(rand()%47);
+                        mano[i] = bj.getCarta(randomnum());
                         cout << "Dealer got a " << mano[i].valor << " of " << mano[i].carta << endl;
                         cardsplayed++;
                     }
                 }
-
+                //EL CODIGO FUNCIONA PERFECTO HASTA AQUÍ
                 int totalY = mano[0].valor + mano[2].valor;
                 int totalD = mano[1].valor + mano[3].valor;
 
-                if (totalY < 21){
-                    *pao3 = 'Y';
-                    int cont = 4;
-                    while(*pao3 == 'Y'){
-                        cout << "Do you want another card?" << endl;
-                        cin >> *pao3;
-                        while(*pao3 != 'Y' && *pao3 != 'N'){
-                            cout << "That option is not contempled, please try again!" << endl;
-                            cin >> *pao3;
-                        }
-                        if(*pao3 == 'Y' && totalY < 21){
-                            carta aleatoryCard = bj.getCarta(rand()%47);
-                            cout << "You get a " << aleatoryCard.valor << " of " << aleatoryCard.carta << endl << endl; 
-                            totalY = totalY + aleatoryCard.valor;
-                            cout << "now you have " << totalY << " on your hand" << endl;
-                            mano[cont] = aleatoryCard;
-                            cardsplayed++;
-                        }else{
-                            *pao3 = 'N';
-                        }
-                        cont++; cont++;
-                    }
+                if(totalY < 21){
+                    
                 }
-                int cont = 3;
+                //EL CODIGO FUNCIONA PERFECTO HASTA AQUÍ
+                int cont = 0;
                 while(totalD < 17){
-                    carta aleatoryCard = bj.getCarta(rand()%47);
+                    carta aleatoryCard = bj.getCarta(randomnum());
                     cout << "Dealer got a " << aleatoryCard.valor << " of " << aleatoryCard.carta << endl << endl; 
                     totalD = totalD + aleatoryCard.valor;
                     cout << "Now dealer have " << totalD << " on his hand" << endl;
@@ -129,9 +118,11 @@ int main(){
                 
                 cout << "Do you want to play another hand?" << endl;
                 cin >> *pao2;
-                while(*pao2 != 'Y' && *pao2 != 'N'){
-                    cout << "That option is not contempled, please try again!" << endl;
-                    cin >> *pao2;
+                if(*pao2 != 'Y' && *pao2 != 'N'){
+                    while(*pao2 != 'Y' && *pao2 != 'N'){
+                        cout << "That option is not contempled, please try again!" << endl;
+                        cin >> *pao2;
+                    }
                 }
                 if(*pao2 == 'N'){
                     cout << "It was a pleasure to play with you!" << endl;
