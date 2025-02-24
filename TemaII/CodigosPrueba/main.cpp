@@ -124,7 +124,7 @@ int main(){
                                     state7 = true;
                                     while (state7 == true){
                                         cout << "Opcion no contemplada! vuelve a introducir Y/N y recuerda que es en mayuscula" << endl;
-                                        cin >> option2;
+                                        cin >> option2; 
                                         if (option2 == 'Y' | option2 == 'N'){
                                             state7 = false;
                                         }
