@@ -32,13 +32,12 @@ carta* mazo::robarCarta(){
 }
 void mazo::mezclarMazo(){
     for(int i = 0; i < 48; i++){
-        carta* cardSelected1 = &cartas[rand()%47];
-        carta* cardSelected2 = &cartas[rand()%47];
-        carta* cardKeep = &cartas[49];
+        carta* cardSelected1 = &cartas[rand()%48];
+        carta* cardSelected2 = &cartas[rand()%48];
+        carta cardKeep = *cardSelected2;
 
-        *cardKeep = *cardSelected1;
         *cardSelected2 = *cardSelected1;
-        *cardSelected1 = *cardKeep;
+        *cardSelected2 = cardKeep;
     }
 }
 

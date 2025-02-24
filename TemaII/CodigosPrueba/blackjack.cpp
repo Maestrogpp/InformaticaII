@@ -26,7 +26,7 @@ int main(){
             cin >> *pao;
         }
     }
-    
+
     if(*pao = 'Y'){
         *pas = 2000.5;
         cout << "Do you want to play with a special feature? (If your cards are of the same kind you will recive x4 your bet!)" << endl;
@@ -54,7 +54,7 @@ int main(){
                 mazo bj;
                 bj.llenarMazo();
                 carta mano[30];
-                //bj.mezclarMazo();
+                bj.mezclarMazo();
                 for(int i = 0; i < 4; i ++){
                     if(i == 0 | i == 2){
                         mano[i] = bj.getCarta(randomnum());
