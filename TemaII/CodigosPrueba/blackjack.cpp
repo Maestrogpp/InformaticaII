@@ -9,6 +9,7 @@ int main(){
     int cardsplayed = 0;
     bool state;
     bool state2;
+    bool state3;
     float saldo, apuesta;
     float* pas = &saldo;
     float* pap = &apuesta;
@@ -42,12 +43,13 @@ int main(){
         while(state == true){
             if(*pao2 == 'Y'){
                 cardsplayed = 0;
-                cout << "Please place your bet" << endl;
-                cin >> *pap;
-                if(*pap < 0 | *pap > *pas){
-                    while(*pap < 0 | *pap > *pas){
-                        cout << "That bet is not posible! please place another bet" << endl;
-                        cin >> *pap;
+                while(state3 == true){
+                    cout << "Please place your bet" << endl;
+                    cin >> *pap;
+                    if(*pap > 0 | *pap < *pas){
+                        state3 = false;
+                    }else{
+                        cout << "That option is not contempled!" << endl;
                     }
                 }
                 cout << endl;
@@ -86,7 +88,6 @@ int main(){
                     }
                     
                 }
-                //EL CODIGO FUNCIONA PERFECTO HASTA AQUÍ
                 cont = 0;
                 while(totalD < 17){
                     carta aleatoryCard2 = bj.getCarta(randomnum());
