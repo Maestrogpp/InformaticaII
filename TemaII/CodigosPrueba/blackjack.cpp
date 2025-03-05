@@ -1,32 +1,39 @@
 #include<iostream>
+#include<time.h>
 #include<string>
 #include"mazo.h"
 #include"utils1.h"
 using namespace std;
 
 int main(){
+    //---------------------------------------------------------------------------------------------------------------
+    //variables
     char option, option2, option3;
     int cardsplayed = 0;
     bool state;
     bool state2;
     bool state3;
     float saldo, apuesta;
+    //Agilizacion de memoria - punteros
     float* pas = &saldo;
     float* pap = &apuesta;
     char* pao = &option;
     char* pao2 = &option2;
     char* pao3 = &option3;
-    *pao2 = 'Y';
+    //---------------------------------------------------------------------------------------------------------------
+    //Inicio del programa - quiere el usuario jugar?
     cout << "You want to play BlackJack?" << endl;
     cin >> *pao;
     cout << endl;
-
+    //Control de errores 1 -- retocar con un modulo en utils.
     if(*pao != 'Y' && *pao != 'N'){
         while(*pao != 'Y' && *pao != 'N'){
             cout << "That option is not contempled, please try again!" << endl;
             cin >> *pao;
         }
     }
+    //---------------------------------------------------------------------------------------------------------------
+    //Ajustes de juego
     if(*pao = 'Y'){
         *pas = 2000.5;
         cout << "Do you want to play with a special feature? (If your cards are of the same kind you will recive x4 your bet!)" << endl;
@@ -38,16 +45,22 @@ int main(){
             }
         }
         cout << endl;
-        //Inicio del juego recursivo
+    //---------------------------------------------------------------------------------------------------------------
+    //programa principal
         while(state == true){
-            if(*pao2 == 'Y'){
+                //inicialiacion de una semilla aleatoria para que no se repitan las mismas manos nunca
+                srand(time(NULL));
+                //se reinicializa la variable cardsplayed para evitar problemas en memoria y reinscribir los datos
                 cardsplayed = 0;
+                //se pide la apuesta para la ronda
                 cout << "Please place your bet" << endl;
+                //control de errores de la apuesta
                 while(!leerApuesta(*pap) || *pap < 0 || *pap > *pas){
                     cout << "That option is not contempled, please try again!" << endl;
                 }
-                
                 cout << endl;
+    //---------------------------------------------------------------------------------------------------------------
+                //inicializacion de los objetos y variables necesarios e inicio de reparto de las cartas 
                 mazo bj;
                 bj.llenarMazo();
                 carta mano[30];
@@ -66,6 +79,8 @@ int main(){
                 cout << endl;
                 int totalY = mano[0].valor + mano[2].valor;
                 int totalD = mano[1].valor + mano[3].valor;
+    //---------------------------------------------------------------------------------------------------------------
+                //reparto de cartas adicionales para el dealer y el jugador
                 *pao3 = 'Y';
                 int cont = 0;
                 while (totalY < 21 && *pao3 == 'Y'){
@@ -93,7 +108,8 @@ int main(){
                     cont++; cont++;
                     cardsplayed++;
                 }
-
+    //---------------------------------------------------------------------------------------------------------------
+                //Analisis de resultados
                 if (totalD < totalY | (totalD > 21 && totalY < 21)){
                     if(*pao == 'Y'){
                         bool winner = true;
@@ -126,7 +142,8 @@ int main(){
                         cout << "We have a tie, no ones win!" << endl;
                     }
                 }
-                
+    //---------------------------------------------------------------------------------------------------------------
+                //Quiere jugar otra mano?
                 cout << "Do you want to play another hand?" << endl;
                 cin >> *pao2;
                 if(*pao2 != 'Y' && *pao2 != 'N'){
@@ -140,13 +157,7 @@ int main(){
                     cout << "exiting" << endl;
                     state = false;
                 }
-            }else{
-                cout << "It was a pleasure to play with you!" << endl;
-                cout << "exiting" << endl;
-                state = false;
-            }
-        }
-        
+        }  
     }else{
         cout << "It was a pleasure to play with you!" << endl;
         cout << "exiting" << endl;
