@@ -18,4 +18,18 @@ bool leerApuesta(float& valor) {
        cin.ignore(numeric_limits <streamsize>::max(), '\n');
     }                        
     return esFloat;         
-}     
+}
+
+bool leerOpcion(char& opcion) {
+    bool esChar;
+
+    cin >> opcion;
+    esChar = cin.good();
+
+    if(!esChar){
+        cin.clear();
+
+        cin.ignore(numeric_limits <streamsize>::max(), '\n');
+    }
+    return esChar;
+}
