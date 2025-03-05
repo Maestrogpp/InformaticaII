@@ -11,11 +11,11 @@ int mazo::llenarMazo(){
         carta aux;
         if (cont < 12){
             aux.carta = "Bastos";
-        }else if(cont > 12 && cont < 24){
+        }else if(cont >= 12 && cont < 24){
             aux.carta = "Oros";
-        }else if(cont > 24 && cont < 36){
+        }else if(cont >= 24 && cont < 36){
             aux.carta = "Copas";
-        }else if(cont > 36){
+        }else if(cont >= 36){
             aux.carta = "Espadas";
         }
         aux.valor =  i % 12 + 1;

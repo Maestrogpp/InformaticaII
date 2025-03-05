@@ -27,7 +27,6 @@ int main(){
             cin >> *pao;
         }
     }
-
     if(*pao = 'Y'){
         *pas = 2000.5;
         cout << "Do you want to play with a special feature? (If your cards are of the same kind you will recive x4 your bet!)" << endl;
@@ -43,27 +42,23 @@ int main(){
         while(state == true){
             if(*pao2 == 'Y'){
                 cardsplayed = 0;
-                while(state3 == true){
-                    cout << "Please place your bet" << endl;
-                    cin >> *pap;
-                    if(*pap > 0 | *pap < *pas){
-                        state3 = false;
-                    }else{
-                        cout << "That option is not contempled!" << endl;
-                    }
+                cout << "Please place your bet" << endl;
+                while(!leerApuesta(*pap) || *pap < 0 || *pap > *pas){
+                    cout << "That option is not contempled, please try again!" << endl;
                 }
+                
                 cout << endl;
                 mazo bj;
                 bj.llenarMazo();
                 carta mano[30];
                 bj.mezclarMazo();
                 for(int i = 0; i < 4; i ++){
-                    if(i == 0 | i == 2){
-                        mano[i] = bj.getCarta(randomnum());
+                    if(i%2 == 0){
+                        mano[i] = bj.getCarta(rand()%48);
                         cout << "You got a " << mano[i].valor << " of " << mano[i].carta << endl;
                         cardsplayed++;
                     }else{
-                        mano[i] = bj.getCarta(randomnum());
+                        mano[i] = bj.getCarta(rand()%48);
                         cout << "Dealer got a " << mano[i].valor << " of " << mano[i].carta << endl;
                         cardsplayed++;
                     }
@@ -78,7 +73,7 @@ int main(){
                     cin >> *pao3;
                     cout << endl;
                     if(*pao3 == 'Y'){
-                        carta aleatoryCard1 = bj.getCarta(randomnum());
+                        carta aleatoryCard1 = bj.getCarta(rand()%48);
                         cout << "You got a " << aleatoryCard1.valor << " of " << aleatoryCard1.carta << endl; 
                         totalY = totalY + aleatoryCard1.valor;
                         cout << "Now you have " << totalY << " on your hand" << endl << endl;
@@ -90,7 +85,7 @@ int main(){
                 }
                 cont = 0;
                 while(totalD < 17){
-                    carta aleatoryCard2 = bj.getCarta(randomnum());
+                    carta aleatoryCard2 = bj.getCarta(rand()%48);
                     cout << "Dealer got a " << aleatoryCard2.valor << " of " << aleatoryCard2.carta << endl; 
                     totalD = totalD + aleatoryCard2.valor;
                     cout << "Now dealer have " << totalD << " on his hand" << endl << endl;
@@ -104,7 +99,7 @@ int main(){
                         bool winner = true;
                         for (int i = 0; i < cardsplayed; i++){
                             if(winner == true){
-                                if (mano[i*2].carta == mano[(i*2)+2].carta | mano[i*2].carta == mano[(i*2)-2].carta){
+                                if (mano[i*2].carta == mano[(i*2)+2].carta && mano[i*2].carta == mano[(i*2)-2].carta){
                                     winner = true;
                                 }else{
                                     winner = false;

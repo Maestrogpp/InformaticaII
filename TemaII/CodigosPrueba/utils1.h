@@ -1,3 +1,3 @@
 bool electionErrorControler(char op);
 bool betErrorControler(int num, int saldo);
-int randomnum();
+bool leerApuesta(float& valor);

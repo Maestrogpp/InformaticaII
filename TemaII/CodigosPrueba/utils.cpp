@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<time.h>
 #include<iostream>
+#include<limits>
 using namespace std;
 
 bool electionErrorControler(char op){
@@ -23,9 +24,16 @@ bool betErrorControler(int num, int saldo){
     }
 }
 
-int randomnum(){
-    int num = 0;
-    srand(time(NULL));
-    num = rand() % 48;
-    return num;
-}
+bool leerApuesta(float& valor) { 
+    bool esFloat;
+
+    cin >> valor;            
+    esFloat = cin.good();   
+
+    if(!esFloat){           
+       cin.clear();          
+    
+       cin.ignore(numeric_limits <streamsize>::max(), '\n');
+    }                        
+    return esFloat;         
+}     
