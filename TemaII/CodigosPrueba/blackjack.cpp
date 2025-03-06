@@ -13,6 +13,7 @@ int main(){
     bool state;
     bool state2;
     bool state3;
+    bool winner = false; 
     float saldo, apuesta;
     //Agilizacion de memoria - punteros
     float* pas = &saldo;
@@ -105,40 +106,53 @@ int main(){
                     cardsplayed++;
                 }
     //---------------------------------------------------------------------------------------------------------------
-                //Analisis de resultados
-                if (totalD < totalY | (totalD > 21 && totalY < 21)){
-                    if(*pao == 'Y'){
-                        bool winner = true;
-                        for (int i = 0; i < cardsplayed; i++){
-                            if(winner == true){
-                                if (mano[i*2].carta == mano[(i*2)+2].carta && mano[i*2].carta == mano[(i*2)-2].carta){
-                                    winner = true;
-                                }else{
-                                    winner = false;
-                                }
-                            }else{
-                                winner = false;
+                if(*pao2 == 'Y'){
+                    for(int i = 0; i < cardsplayed; i++){
+                        if(cardsplayed < cardsplayed-1){
+                            if(mano[i].carta == mano[i+1].carta){
+                            winner = true;
                             }
                         }
-                        if (winner == true){
-                            *pas = *pas + (*pap * 4);
-                            cout << "Congratulations! You won: " << *pap * 4 << ". Now you have: " << *pas << endl << endl;
-                        }else{
-                            *pas = *pas + (*pap * 2);
-                            cout << "Congratulations! You won: " << *pap * 2 << ". Now you have: " << *pas << endl << endl;
-                        }
-                    }else{
-                        *pas = *pas + (*pap * 2);
                     }
-                }else if(totalY < totalD | (totalY > 21 && totalD < 21)){
-                    *pas = *pas - *pap;
-                    cout << "You lost! Now you have " << *pas << endl << endl; 
+                }
+                if (totalD <= 21 && totalY <= 21){
+                    if(totalD < totalY && totalY <= 21){
+                        cout << "You won! " << endl;
+                        if(winner == true){
+                            *pas += (*pap * 4);
+                        }else{
+                            *pas += (*pap *2);
+                        }
+                    }
+                    if(totalD > totalY && totalD <= 21){
+                        cout << "You loose!" << endl;
+                        *pas -= *pap;
+                    }
+                    if(totalD == totalY){
+                        cout << "We have a tie!" << endl;
+                    }
                 }else{
-                    if(totalY == totalD){
-                        cout << "We have a tie, no ones win!" << endl;
+                    if(totalD == totalY){
+                        cout << "We have a tie!" << endl;
+                    }
+                    if(totalD > 21 && totalY > 21){
+                        cout << "We have a tie!" << endl;
+                    }
+                    if(totalY > 21 && totalD < 21){
+                        cout << "You loose!" << endl;
+                        *pas -= *pap;
+                    }
+                    if(totalD > 21 && totalY < 21){
+                        cout << "you won!" << endl;
+                        if(winner == true){
+                            *pas += (*pap * 4);
+                        }else{
+                            *pas += (*pap *2);
+                        }
                     }
                 }
     //---------------------------------------------------------------------------------------------------------------
+                cout << "saldo: " << *pas << endl << endl;
                 //Quiere jugar otra mano?
                 cout << "Do you want to play another hand?" << endl;
                 cin >> *pao2;
