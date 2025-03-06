@@ -24,6 +24,9 @@ void Coche::setVelocidadMaxima(double nuevaVelocidadMaxima){
 
 //Funcionalidades
 void Coche::arrancar(){
+	if(encendido == false){
+		velocidad = 0;
+	}
 	encendido = true;
 };
 
