@@ -26,11 +26,9 @@ int main(){
     cin >> *pao;
     cout << endl;
     //Control de errores 1 -- retocar con un modulo en utils.
-    if(*pao != 'Y' && *pao != 'N'){
-        while(*pao != 'Y' && *pao != 'N'){
-            cout << "That option is not contempled, please try again!" << endl;
-            cin >> *pao;
-        }
+    while(*pao != 'Y' && *pao != 'N'){
+        cout << "That option is not contempled, please try again!" << endl;
+        cin >> *pao;
     }
     //---------------------------------------------------------------------------------------------------------------
     //Ajustes de juego
@@ -38,12 +36,10 @@ int main(){
         *pas = 2000.5;
         cout << "Do you want to play with a special feature? (If your cards are of the same kind you will recive x4 your bet!)" << endl;
         cin >> *pao2;
-        if(*pao2 != 'Y' && *pao2 != 'N'){
-            while(*pao2 != 'Y' && *pao2 != 'N'){
-                cout << "That option is not contempled, please try again!" << endl;
-                cin >> *pao2;
-            }
-        }
+    while(*pao2 != 'Y' && *pao != 'N'){
+        cout << "That option is not contempled, please try again!" << endl;
+        cin >> *pao2;   
+    }
         cout << endl;
     //---------------------------------------------------------------------------------------------------------------
     //programa principal
