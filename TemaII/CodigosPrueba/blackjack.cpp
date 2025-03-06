@@ -9,12 +9,10 @@ int main(){
     //---------------------------------------------------------------------------------------------------------------
     //variables
     char option, option2, option3;
+    float saldo, apuesta;
     int cardsplayed = 0;
     bool state;
-    bool state2;
-    bool state3;
     bool winner = false; 
-    float saldo, apuesta;
     //Agilizacion de memoria - punteros
     float* pas = &saldo;
     float* pap = &apuesta;
@@ -26,7 +24,6 @@ int main(){
     cout << "You want to play BlackJack?" << endl;
     cin >> *pao;
     cout << endl;
-    //Control de errores 1 -- retocar con un modulo en utils.
     while(*pao != 'Y' && *pao != 'N'){
         cout << "That option is not contempled, please try again!" << endl;
         cin >> *pao;
