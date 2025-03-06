@@ -10,18 +10,20 @@ Puntos: 1, 8, 9
 using namespace std;
 
 class Hora{
-	private: 
+	private:
+		//atributos 
 		int hora;
 		int minuto;
 		int segundo;
 	public:
+		//getters y setters
 		void setHora(int h);
 		void setMinuto(int m);
 		void setSecond(int s);
 		int getHora();
 		int getMinuto();
 		int getSegundo();
-		
+		//métodos
 		void mostrarHora();
 		void reiniciar(int h, int m, int s);
 		void sumarHora(int h);

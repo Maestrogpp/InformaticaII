@@ -24,6 +24,7 @@ void Coche::setVelocidadMaxima(double nuevaVelocidadMaxima){
 
 //Funcionalidades
 void Coche::arrancar(){
+	//Se comprueba si el coche pasa de estar aparcado(veocidad 0) a encendido o si simplemente esta haciendo contacto la llave
 	if(encendido == false){
 		velocidad = 0;
 	}
@@ -31,18 +32,21 @@ void Coche::arrancar(){
 };
 
 void Coche::apagar(){
+	//para apagar el cohe es necesario que este quieto
 	if(velocidad == 0){
 		encendido = false;
 	}
 }
 
 void Coche::frenar(double decremento){
+	//El coche necesita estar en funcionamiento y no puede ir a una velocidad negativa
 	if(encendido == true && (velocidad-decremento) >= 0){
 		velocidad = velocidad - decremento;
 	}
 }
 
 void Coche::acelerar(double incremento){
+	//El coche necesita estar en funcionamiento y no puede superar su velocidad maxima
 	if(encendido == true && (velocidad+incremento) <= velocidadMaxima){
 		velocidad = velocidad + incremento;
 	}
@@ -53,6 +57,7 @@ bool Coche::isEncendido(){
 }
 
 double Coche::obtenerVelocidad(){
+	//no es necesario obtener la velocidad de un coche que se encuentra aparcado y apagado
 	if(encendido == true){
 		return velocidad;
 	}else{

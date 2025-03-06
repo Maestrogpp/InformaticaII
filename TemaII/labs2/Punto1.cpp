@@ -18,7 +18,7 @@ int main(){
 	rectangulo2.setAlto(10);
 	rectangulo2.setAncho(10);
 	
-	//Primer apartado del ejercicio
+	//Se comprueba la funcionalidad del metodo obtener area de la clase rectangulo
 	float AreaR1 = rectangulo1.obtenerArea();
 	float AreaR2 = rectangulo2.obtenerArea();
 	cout << "El area del rectangulo 1 es: " << AreaR1 << " y el del Rectangulo 2: " << AreaR2 << endl;

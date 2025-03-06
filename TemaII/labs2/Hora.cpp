@@ -9,6 +9,7 @@ Puntos: 1, 8, 9
 #include"Hora.h"
 using namespace std;
 
+//setters de los atributos de la clase hora
 void Hora::setHora(int h){
 	if(h < 24 && h >= 0){
 		hora = h;
@@ -29,7 +30,7 @@ void Hora::setSecond(int s){
 	}
 }
 
-
+//getters de la clase hora
 int Hora::getHora(){
 	return hora;
 }
@@ -44,12 +45,12 @@ int Hora::getSegundo(){
 	return segundo;
 }
 
-		
+//Método para sacar por pantalla la hora
 void Hora::mostrarHora(){
 	cout << "Son las: " << hora << ":" << minuto << ":" << segundo; 
 }
 
-
+//Reinicio en un punto x del reloj
 void Hora::reiniciar(int h, int m, int s){
 	if(h < 24 && h >= 0 && m < 60 && m >= 0 && s < 60 && s >= 0){
 		hora = h;
@@ -59,7 +60,7 @@ void Hora::reiniciar(int h, int m, int s){
 	
 }
 
-
+//Se añade a la hora un incremento x
 void Hora::sumarHora(int h){
 	hora = hora + h;
 	if(hora > 24){
@@ -69,10 +70,11 @@ void Hora::sumarHora(int h){
 	}
 }
 
-
+//Se añade al minuto un incremento x
 void Hora::sumarMinuto(int m){
 	minuto = minuto + m;
 	int cont = 0;
+	//Si los minutos se igualan o superan 60 se convierte en una hora
 	if(minuto >= 60){
 		while(minuto >= 60){
 			minuto = minuto - 60;
@@ -82,10 +84,11 @@ void Hora::sumarMinuto(int m){
 	hora = hora + cont;
 }
 
-
+//Se añade al segundo un incremento x
 void Hora::sumarSegundo(int s){
 	segundo = segundo + s;
 	int cont = 0;
+	//Si los segundos igualan o superan 60 se convierte en minutos
 	if (segundo >= 60){
 		while(segundo >= 60){
 			segundo = segundo - 60;

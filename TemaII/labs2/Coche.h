@@ -10,16 +10,19 @@ using namespace std;
 
 class Coche{
 	private:
+	//Atributos del coche
 		string color;
 		string motor;
 		double velocidadMaxima;
 		double velocidad;
 		bool encendido;
 	public:
+	//setters de las caracteristicas del coche
 		void setColor(string& nuevoColor);
 		void setMotor(string& nuevoMotor);
 		void setVelocidadMaxima(double nuevaVelocidadMaxima);
 		
+	//metodos necesarios para el funcionamiento de cualquier coche (abstraccion)
 		void arrancar();
 		void apagar();
 		void frenar(double decremento);
