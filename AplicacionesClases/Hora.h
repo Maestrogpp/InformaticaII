@@ -13,7 +13,7 @@ class Hora{
         void setSegundo(int nuevo_segundo);
 
         void resetHora(int h, int m, int s);
-        int queHoraEs();
+        void queHoraEs();
         void sumaSegundo(int s);
         int tiempoTrancurrido(int h, int m, int s);
 };

@@ -1,5 +1,5 @@
 #include"hora.h"
-
+#include<iostream>
 using namespace std;
 
 void Hora::setHora(int nueva_hora){
@@ -17,12 +17,8 @@ void Hora::resetHora(int h, int m, int s){
     minuto = m;
     segundo = s;
 }
-int Hora::queHoraEs(){
-    int array[3];
-    array[0] = hora;
-    array[1] = minuto;
-    array[2] = segundo;
-    return array[0], array[1], array[2];
+void Hora::queHoraEs(){
+    cout << hora << ":" << minuto << ":" << segundo << endl;
 }
 
 void Hora::sumaSegundo(int s){
