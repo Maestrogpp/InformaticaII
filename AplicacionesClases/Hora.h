@@ -15,5 +15,5 @@ class Hora{
         void resetHora(int h, int m, int s);
         int queHoraEs();
         void sumaSegundo(int s);
-        int tiempoTrancurrido(tiempo a);
+        int tiempoTrancurrido(int h, int m, int s);
 };

@@ -45,9 +45,9 @@ void Hora::sumaSegundo(int s){
     }
 }
 
-int Hora::tiempoTrancurrido(tiempo a){
-    int tts = segundo - a.s;
-    int ttm = (minuto - a.m) * 60;
-    int tth = (hora - a.h) * 3600;
+int Hora::tiempoTrancurrido(int h, int m, int s){
+    int tts = segundo - s;
+    int ttm = (minuto - m) * 60;
+    int tth = (hora - h) * 3600;
     return tts + ttm + tth;
 }       

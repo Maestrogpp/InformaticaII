@@ -1,4 +1,5 @@
 #include<iostream>
+#include<time.h>
 #include<string>
 #include"utils.h"
 #include"Hora.h"
@@ -9,27 +10,23 @@ int main(){
     Hora cHora;
     Barquito barco;
     Velocimetro control;
-    position a;
-    tiempo b;
-    a.x = 0;
-    a.y = 0;
-    a.z = 0;
-
-    b.s = 0;
-    b.m = 30;
-    b.h = 12;
+    srand(time(NULL));
+    //modulo
     cHora.resetHora(12, 30, 0);
-    barco.setPosition(a);
+    barco.setPosition(3.5, 0, 20);
     control.setPosition(barco.getPosition());
-    for(int i = 0; i = 20; i++){
-        for(int j = 0; j < 5; j++){
-            position new_Position;
-            new_Position.x = i*0.5;
-            new_Position.y = 3;
-            new_Position.z = j * 4;
-            barco.setPosition(new_Position);
-        }
-        int c = cHora.tiempoTrancurrido(b);
+    for(int i = 0; i < 20; i++){
+        position last_position;
+        last_position = barco.getPosition();
+        position new_Position;
+        new_Position.x = last_position.x + i*rand()%10;
+        new_Position.y = last_position.y + rand();
+        new_Position.z = last_position.z + i * rand()%100;
+        barco.setPosition(new_Position.x, new_Position.y, new_Position.z);
+        cHora.sumaSegundo(1);
+        control.setPosition(new_Position);
+        control.setLastPosition(last_position); 
+        int c = cHora.tiempoTrancurrido(12, 30, 0);
         cout << "El barco esta viajando a una velocidad de: " << control.calcularVelocidad(c) << " en el tiempo: " << cHora.queHoraEs();
     }
 }

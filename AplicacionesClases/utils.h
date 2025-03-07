@@ -23,7 +23,7 @@ class Barquito{
         position getPosition();
         position* getOperationPosition();
         void setVelocidad(float new_velocidad);
-        void setPosition(position new_position);
+        void setPosition(float a, float b, float c);
         void setOperationPosition(position* new_operator);
 };
 

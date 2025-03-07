@@ -19,8 +19,10 @@ void Barquito::setVelocidad(float new_velocidad){
     velocidad = new_velocidad;
 }
 
-void Barquito::setPosition(position new_position){
-    posicion = new_position;
+void Barquito::setPosition(float a, float b, float c){
+    posicion.x = a;
+    posicion.y = b;
+    posicion.z = c;
 }
 
 void Barquito::setOperationPosition(position* new_operator){
