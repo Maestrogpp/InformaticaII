@@ -105,8 +105,8 @@ int main(){
     //---------------------------------------------------------------------------------------------------------------
                 if(*pao2 == 'Y'){
                     for(int i = 0; i < cardsplayed; i++){
-                        if(cardsplayed < cardsplayed-1){
-                            if(mano[i].carta == mano[i+1].carta){
+                        if(i > 0 && i < cardsplayed){
+                            if(mano[i].carta == mano[i+1].carta && mano[i].carta == mano[i-1].carta){
                             winner = true;
                             }
                         }
@@ -151,6 +151,7 @@ int main(){
     //---------------------------------------------------------------------------------------------------------------
                 cout << "saldo: " << *pas << endl << endl;
                 //Quiere jugar otra mano?
+            if(*pas > 0){
                 cout << "Do you want to play another hand?" << endl;
                 cin >> *pao2;
                 if(*pao2 != 'Y' && *pao2 != 'N'){
@@ -164,6 +165,11 @@ int main(){
                     cout << "exiting" << endl;
                     state = false;
                 }
+            }else{
+                cout << "It was a pleasure to play with you!" << endl;
+                cout << "exiting" << endl;
+                state = false;
+            }
         }  
     }else{
         cout << "It was a pleasure to play with you!" << endl;
