@@ -21,7 +21,7 @@ const bool Cuenta::operator<(const Cuenta& otra){
 	
 Cuenta Cuenta::operator+(const float& monto){
 	Cuenta resultado;
-	resultado.saldo = monto;
+	resultado.saldo = this->saldo + monto;
 	return resultado;
 }
 

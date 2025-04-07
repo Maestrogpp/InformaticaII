@@ -21,14 +21,15 @@ int main(){
     cout << cuenta1.toString() << "   " <<  cuenta2.toString() << endl;
     cout << endl << endl << endl;
     //Funcionalidades
-    if(cuenta1 < cuenta2){
+    if(cliente1.getCuenta() < cliente2.getCuenta()){
         cout << cliente2.getNombre() << " tiene mas dinero que " << cliente1.getNombre() << endl;
     }else{
         cout << cliente1.getNombre() << " tiene mas dinero que " << cliente2.getNombre() << endl;
     }
     cout << cliente1.getNombre() << " ha recibido un ingereso de 200 dolares" << endl;
     cuenta1 = cuenta1 + 200;
-    if(cuenta1 < cuenta2){
+    cliente1.setCuenta(cuenta1);
+    if(cliente1.getCuenta() < cliente2.getCuenta()){
         cout << cliente2.getNombre() << " tiene mas dinero que " << cliente1.getNombre() << endl;
     }else{
         cout << cliente1.getNombre() << " tiene mas dinero que " << cliente2.getNombre() << endl;
