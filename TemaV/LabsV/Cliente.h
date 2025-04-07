@@ -1,3 +1,10 @@
+/* 
+Nombre: Felipe Maestro Álvarez
+Fecha: 04/04/2025
+Docente: Manuel E. Gantiva
+Descripción: Tema 6
+Puntos: 2
+*/
 #pragma once
 #include<string>
 #include<iostream>
