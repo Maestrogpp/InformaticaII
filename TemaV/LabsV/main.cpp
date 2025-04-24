@@ -41,7 +41,7 @@ int main(){
     }else{
         cout << cliente1.getNombre() << " tiene mas dinero que " << cliente2.getNombre() << endl;
     }
-    if(persona1 == persona2){
+    if(cliente1.getNombre() == cliente2.getNombre()){
         cout << "Hay dos cuentas con el mismo nombre, por favor solucione el problema " << endl;
     }else{
         cout << "Todo correcto " << endl;

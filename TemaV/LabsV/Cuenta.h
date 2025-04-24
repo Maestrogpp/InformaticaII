@@ -34,5 +34,4 @@ class Cuenta{
 		float getSaldo();
 		//Organizacion de la informacion en un string
 		string toString();
-
 };
