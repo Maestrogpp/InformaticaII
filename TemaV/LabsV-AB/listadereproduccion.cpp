@@ -26,28 +26,29 @@ bool ListaDeReproduccion::setReproduciendo(int numero){
 }
 
 bool ListaDeReproduccion::setReproduciendo(Musica musica){
-    for(int i = 0; i < 20; i++){
-        if (musicas[i] == musica){
-            this->reproduciendo = &musicas[i];
+    for(int i = 0; i < this->cant_musicas; i++){
+        if (this->musicas[i] == musica){
+            this->reproduciendo = &(this->musicas[i]);
             return true;
-        }else{
-            this->reproduciendo = nullptr;
-            return false;
         }
     }
+    this->reproduciendo = nullptr;
+    return false;
 }
 
 string ListaDeReproduccion::toString(){
+    string resultado;
     for(int i = 0; i < this->cant_musicas; i++){
-        return "Cancion: " + this-> musicas[i].getNombre() + "--Artista: " + this-> musicas[i].getArtista() + "--Duracion: " + to_string(this->musicas[i].getDuracion());
+        resultado+= "Cancion: " + this-> musicas[i].getNombre() + "--Artista: " + this-> musicas[i].getArtista() + "--Duracion: " + to_string(this->musicas[i].getDuracion()) + "\n";
     }
+    return resultado;
 }
 
 ListaDeReproduccion& ListaDeReproduccion::operator+=(const Musica& musica){
     bool temp = false;
     if(this->cant_musicas < 20){
         for(int i = 0; i < cant_musicas; i++){
-            if(musicas[i] == musica){
+            if(this->musicas[i] == musica){
                 temp = true;
                 break;
             }else{
@@ -55,7 +56,8 @@ ListaDeReproduccion& ListaDeReproduccion::operator+=(const Musica& musica){
             }
         }
         if(temp == false){
-            musicas[cant_musicas] = musica;
+            this->musicas[this->cant_musicas] = musica;
+            this->cant_musicas++;
         }
     }
 }
