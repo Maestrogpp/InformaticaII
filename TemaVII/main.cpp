@@ -194,7 +194,6 @@ while(option != 0){
         Asignatura value = *insert;
         DesordenadoII.erase(insert);
         DesordenadoII.insert(location, value);
-
     }
     cout << endl;
     location = DesordenadoII.begin();
@@ -203,6 +202,5 @@ while(option != 0){
         cout << *location << endl;
         advance(location, 1);
     }
-
     return 0;
 }

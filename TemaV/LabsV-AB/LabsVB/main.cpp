@@ -1,6 +1,8 @@
 #include<string>
 #include<iostream>
 #include"Vector2D.h"
+#include"Entero.h"
+#include"Flotante.h"
 using namespace std;
 
 template<typename T, typename G, typename O> T multiTool(T a[], G result, O alocate, int n, char option){
@@ -40,11 +42,17 @@ template<typename A, typename B> A direcctions(A object1, B object2, A* ptr1, B*
         case 3:{
             ptr1 = &object1;
             ptr2 = &object2;
-
+        }
+        default:{
+            cout << "?" << endl;
         }
     }
 };
 
+template<typename T> T Tolerance(T factor){
+    cout << factor.getTolerance()*2 << endl;
+    cout << factor.getTolerance()/2 << endl; 
+};
 
 
 int main(){
@@ -101,6 +109,7 @@ int main(){
     cout << endl << endl;
 
     //ejercicio 6
-
+    Flotante a;
+    Tolerance(a);
     return 0;
 }
