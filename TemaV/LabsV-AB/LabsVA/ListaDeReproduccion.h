@@ -1,5 +1,5 @@
+#pragma once
 #include"Musica.h"
-
 
 class ListaDeReproduccion : public Musica{
     private:
